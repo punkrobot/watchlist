@@ -3,6 +3,8 @@ import 'package:watchlist/features/movie_list/domain/models/genre.dart';
 import 'package:watchlist/features/movie_list/domain/models/movie.dart';
 
 class MovieRepository {
+  final imagePath = 'https://image.tmdb.org/t/p/w500';
+
   Future<List<Movie>> listMovies() async {
     final service = MovieService()..init();
     final genres = await service.listGenres();
@@ -20,7 +22,7 @@ class MovieRepository {
                         name: genres.firstWhere((g) => g.id == id).name,
                       ))
                   .toList(),
-              poster: e.poster,
+              poster: e.poster != null ? '$imagePath${e.poster}' : '',
             ))
         .toList();
   }
