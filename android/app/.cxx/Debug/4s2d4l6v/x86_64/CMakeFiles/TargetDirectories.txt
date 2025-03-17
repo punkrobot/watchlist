@@ -1,0 +1,2 @@
+/Users/juanm/Projects/Kueski/watchlist/android/app/.cxx/Debug/4s2d4l6v/x86_64/CMakeFiles/edit_cache.dir
+/Users/juanm/Projects/Kueski/watchlist/android/app/.cxx/Debug/4s2d4l6v/x86_64/CMakeFiles/rebuild_cache.dir
