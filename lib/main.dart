@@ -4,6 +4,8 @@ import 'package:watchlist/services/log.dart';
 import 'package:watchlist/services/service_locator.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   Log.init();
 
   setupLocator();
