@@ -9,8 +9,7 @@ part 'rest_client.g.dart';
 abstract class RestClient {
   factory RestClient(Dio dio, {String? baseUrl}) = _RestClient;
 
-  @GET(
-      '/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc')
+  @GET('/movie/now_playing?language=es-MX&page=1&region=MX')
   Future<MoviesResult> getPopularMovies();
 
   @GET('/genre/movie/list?language=es')

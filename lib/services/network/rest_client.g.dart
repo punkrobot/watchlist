@@ -36,7 +36,7 @@ class _RestClient implements RestClient {
     )
         .compose(
           _dio.options,
-          '/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc',
+          '/movie/now_playing?language=es-MX&page=1&region=MX',
           queryParameters: queryParameters,
           data: _data,
         )
