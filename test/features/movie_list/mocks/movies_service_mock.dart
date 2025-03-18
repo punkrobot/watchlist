@@ -18,6 +18,14 @@ class MovieServiceMock extends Mock implements MovieService {
             poster: '/test.jpg',
             releaseDate: '2025-01-01',
             genreIds: [1, 2],
+          ),
+          Movie(
+            id: 2,
+            title: 'Test 2',
+            overview: 'Overview 2',
+            poster: '/test.jpg',
+            releaseDate: '2025-01-01',
+            genreIds: [1, 2],
           )
         ],
       ),
