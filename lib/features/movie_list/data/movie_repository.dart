@@ -3,16 +3,19 @@ import 'package:watchlist/features/movie_list/domain/models/genre.dart';
 import 'package:watchlist/features/movie_list/domain/models/movie.dart';
 
 class MovieRepository {
-  final imagePath = 'https://image.tmdb.org/t/p/w500';
+  late MovieService movieService;
+
+  MovieRepository(this.movieService);
+
 
   Future<List<Movie>> listMovies() async {
-    final service = MovieService()..init();
-    final genres = await service.listGenres();
+    final genres = await movieService.listGenres();
 
-    final moviesResult = await service.listMovies();
+    final moviesResult = await movieService.listMovies();
 
     return moviesResult.results
         .map((e) => Movie(
+              id: e.id,
               title: e.title,
               overview: e.overview,
               releaseDate: DateTime.parse(e.releaseDate),

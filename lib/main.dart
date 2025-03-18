@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:watchlist/features/movie_list/presentation/movies_list_view.dart';
+import 'package:watchlist/features/movie_list/presentation/movie_list/movies_list_view.dart';
 import 'package:watchlist/services/log.dart';
+import 'package:watchlist/services/service_locator.dart';
 
 void main() {
   Log.init();
+
+  setupLocator();
 
   runApp(const App());
 }
