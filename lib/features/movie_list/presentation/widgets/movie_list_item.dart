@@ -55,6 +55,16 @@ class MovieListItem extends StatelessWidget {
             ),
           ),
         ),
+        if (movie.inWatchlist)
+          const Positioned(
+            top: 16,
+            right: 16,
+            child: Icon(
+              Icons.remove_red_eye_rounded,
+              color: Colors.white,
+              size: 28,
+            ),
+          ),
       ],
     );
   }

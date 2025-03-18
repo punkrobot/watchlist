@@ -22,9 +22,14 @@ class MoviesListView extends StatelessWidget {
               ),
               itemCount: state.movies.length,
               itemBuilder: (context, index) => GestureDetector(
-                onTap: () {
-                  Navigator.of(context)
-                      .push(MovieDetailRoute(state.movies[index]));
+                onTap: () async {
+                  final action = await Navigator.of(context).push(
+                    MovieDetailRoute(state.movies[index]),
+                  ) as bool?;
+
+                  if (action == true) {
+                    cubit.updateMovieWatchlistStatus(state.movies[index]);
+                  }
                 },
                 child: MovieListItem(
                   movie: state.movies[index],

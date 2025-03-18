@@ -49,6 +49,7 @@ class MovieDetailView extends StatelessWidget {
                       top: 16,
                       left: 16,
                       right: 32,
+                      bottom: 18,
                     ),
                     child: Hero(
                       tag: 'movie-${movie.id}-title',
@@ -58,7 +59,6 @@ class MovieDetailView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Spacer(),
                   Padding(
                     padding: const EdgeInsets.only(left: 16, right: 16),
                     child: Text(
@@ -70,10 +70,10 @@ class MovieDetailView extends StatelessWidget {
                     padding: const EdgeInsets.only(
                       top: 24,
                       left: 16,
-                      right: 16,
-                      bottom: 16,
+                      right: 50,
+                      bottom: 36,
                     ),
-                    child: Row(
+                    child: Wrap(
                       children: [
                         ...movie.genres.map(
                           (genre) => GenreLabel(genre: genre.name),
@@ -95,7 +95,22 @@ class MovieDetailView extends StatelessWidget {
                   size: 28,
                 ),
               ),
-            )
+            ),
+            Positioned(
+              bottom: 28,
+              right: 28,
+              child: FloatingActionButton(
+                backgroundColor: Colors.white,
+                onPressed: () => Navigator.of(context).pop(true),
+                child: Icon(
+                  movie.inWatchlist
+                      ? Icons.remove_red_eye_rounded
+                      : Icons.remove_red_eye_outlined,
+                  color: Colors.black,
+                  size: 32,
+                ),
+              ),
+            ),
           ],
         ),
       ),
