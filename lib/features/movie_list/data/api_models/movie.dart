@@ -4,6 +4,8 @@ part 'movie.g.dart';
 
 @JsonSerializable()
 class Movie {
+  final int id;
+
   final String title;
 
   final String overview;
@@ -18,6 +20,7 @@ class Movie {
   final List<int> genreIds;
 
   Movie({
+    required this.id,
     required this.title,
     required this.overview,
     required this.poster,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:watchlist/features/movie_list/domain/models/movie.dart';
-import 'package:watchlist/features/movie_list/presentation/widgets/genre_label.dart';
 
 class MovieListItem extends StatelessWidget {
   final Movie movie;
@@ -12,40 +11,51 @@ class MovieListItem extends StatelessWidget {
 
   @override
   Widget build(Object context) {
-    const textStyle = TextStyle(color: Colors.white, fontSize: 24);
+    const textStyle = TextStyle(color: Colors.white, fontSize: 16);
 
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: Container(
-        height: 600,
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-          image: DecorationImage(
-            image: NetworkImage(movie.poster),
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-              Colors.black.withAlpha(80),
-              BlendMode.srcOver,
+    return Stack(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: Hero(
+            tag: 'movie-${movie.id}-poster',
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                image: DecorationImage(
+                  image: NetworkImage(movie.poster),
+                  fit: BoxFit.cover,
+                  colorFilter: ColorFilter.mode(
+                    Colors.black.withAlpha(80),
+                    BlendMode.srcOver,
+                  ),
+                ),
+              ),
             ),
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(movie.title, style: textStyle),
-            const SizedBox(height: 8),
-            Row(
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: Container(
+            height: 600,
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ...movie.genres.map(
-                  (genre) => GenreLabel(genre: genre.name),
+                Hero(
+                  tag: 'movie-${movie.id}-title',
+                  child: Text(
+                    movie.title,
+                    overflow: TextOverflow.fade,
+                    style: textStyle,
+                  ),
                 ),
               ],
             ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }
