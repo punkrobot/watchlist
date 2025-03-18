@@ -7,6 +7,7 @@ class MovieRepository {
 
   MovieRepository(this.movieService);
 
+  final _imagePath = 'https://image.tmdb.org/t/p/w500';
 
   Future<List<Movie>> listMovies() async {
     final genres = await movieService.listGenres();
@@ -26,6 +27,7 @@ class MovieRepository {
                       ))
                   .toList(),
               poster: e.poster != null ? '$imagePath${e.poster}' : '',
+              poster: e.poster != null ? '$_imagePath${e.poster}' : '',
             ))
         .toList();
   }
